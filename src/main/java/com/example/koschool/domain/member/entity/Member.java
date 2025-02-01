@@ -1,7 +1,11 @@
 package com.example.koschool.domain.member.entity;
 
+import com.example.koschool.domain.comment.entity.Comment;
 import com.example.koschool.domain.community.entity.Community;
+import com.example.koschool.domain.communityLikes.entity.CommunityLikes;
 import com.example.koschool.domain.enums.CategoryEnum;
+import com.example.koschool.domain.newsletterLikes.entity.NewsletterLikes;
+import com.example.koschool.domain.quiz.entity.Quiz;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -48,9 +52,33 @@ public class Member {
     private CategoryEnum categoryTopic;
 
     /**
-     * 커뮤니티
+     * 커뮤니티 글 올린 내역
      */
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Community> communityList;
+
+    /**
+     * 커뮤니티 좋아요 내역
+     */
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<CommunityLikes> communityLikesList;
+
+    /**
+     * 커뮤니티 댓글 내역
+     */
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<Comment> comment;
+
+    /**
+     * 뉴스레터 좋아요 내역
+     */
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<NewsletterLikes> newsletterLikesList;
+
+    /**
+     * 퀴즈 내역
+     */
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<Quiz> quizList;
 
 }

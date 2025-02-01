@@ -42,6 +42,6 @@ public class CommunityLikes {
     /**
      * 좋아요 취소 여부
      */
-    @Column(name = "likes_yn", unique = true, nullable = false)
+    @Column(name = "likes_yn",  nullable = false)
     private Boolean likesYn;
 }

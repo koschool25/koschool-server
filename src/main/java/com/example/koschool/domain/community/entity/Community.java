@@ -1,5 +1,6 @@
 package com.example.koschool.domain.community.entity;
 
+import com.example.koschool.domain.comment.entity.Comment;
 import com.example.koschool.domain.common.BaseEntity;
 import com.example.koschool.domain.communityLikes.entity.CommunityLikes;
 import com.example.koschool.domain.member.entity.Member;
@@ -64,9 +65,16 @@ public class Community extends BaseEntity {
     private Integer comments;
 
     /**
-     * 댓글
+     * 좋아요
      */
     @OneToMany(mappedBy = "community", cascade = CascadeType.ALL)
     private List<CommunityLikes> communityLikesList;
+
+    /**
+     * 댓글
+     */
+    @OneToMany(mappedBy = "community", cascade = CascadeType.ALL)
+    private List<Comment> commentList;
+
 
 }
