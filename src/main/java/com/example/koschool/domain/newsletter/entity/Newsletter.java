@@ -62,4 +62,10 @@ public class Newsletter {
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<NewsletterLikes> newsletterLikesList;
 
+    /**
+     * 종목 코드
+     */
+    @Column(name = "stock_code")
+    private String stockCode;
+
 }
