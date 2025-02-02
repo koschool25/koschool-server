@@ -5,19 +5,19 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-public class JoinMemberResponseDto {
+public class MemberResponseDto {
 
     private Long memberId;
     private String id;
 
     @Builder
-    private JoinMemberResponseDto(Long memberId, String id) {
+    private MemberResponseDto(Long memberId, String id) {
         this.memberId = memberId;
         this.id = id;
     }
 
-    public static JoinMemberResponseDto of(Member member) {
-        return JoinMemberResponseDto.builder()
+    public static MemberResponseDto of(Member member) {
+        return MemberResponseDto.builder()
             .memberId(member.getMemberId())
             .id(member.getId())
             .build();

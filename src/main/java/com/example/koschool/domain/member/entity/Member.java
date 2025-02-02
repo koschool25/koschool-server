@@ -91,11 +91,11 @@ public class Member {
         this.categoryTopic = categoryTopic;
     }
 
-    public static Member fromDtoToEntity(JoinMemberRequestDto joinMemberRequestDto) {
+    public static Member fromDtoToEntity(JoinMemberRequestDto memberRequestDto) {
         return Member.builder()
-            .id(joinMemberRequestDto.getId())
-            .password(joinMemberRequestDto.getPassword())
-            .categoryTopic(joinMemberRequestDto.getCategoryTopic())
+            .id(memberRequestDto.getId())
+            .password(memberRequestDto.getPassword())
+            .categoryTopic(memberRequestDto.getCategoryTopic())
             .build();
     }
 
