@@ -5,7 +5,7 @@ import com.example.koschool.domain.community.entity.Community;
 import com.example.koschool.domain.communityLikes.entity.CommunityLikes;
 import com.example.koschool.domain.enums.CategoryEnum;
 import com.example.koschool.domain.newsletterLikes.entity.NewsletterLikes;
-import com.example.koschool.domain.quiz.entity.Quiz;
+import com.example.koschool.domain.quizHistory.entity.QuizHistory;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -79,6 +79,6 @@ public class Member {
      * 퀴즈 내역
      */
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
-    private List<Quiz> quizList;
+    private List<QuizHistory> quizList;
 
 }

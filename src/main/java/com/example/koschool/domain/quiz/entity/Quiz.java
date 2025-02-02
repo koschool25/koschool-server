@@ -1,15 +1,12 @@
 package com.example.koschool.domain.quiz.entity;
 
-import com.example.koschool.domain.member.entity.Member;
+import com.example.koschool.domain.enums.LevelEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import java.time.LocalDateTime;
 import lombok.Getter;
 
 @Entity
@@ -26,27 +23,44 @@ public class Quiz {
     private Long quizId;
 
     /**
-     * 사용자 고유 id
+     * 수준
      */
-    @ManyToOne
-    @JoinColumn(referencedColumnName = "member_id", name = "member_id", nullable = false)
-    private Member member;
+    @Column(name = "level", nullable = false)
+    private LevelEnum level;
 
     /**
-     * 이용 날짜
+     * 질문
      */
-    @Column(name = "date", nullable = false)
-    private LocalDateTime date;
+    @Column(name = "question", unique = true, nullable = false)
+    private String question;
 
     /**
-     * 정답률
+     * 정답
      */
-    @Column(name = "rate", nullable = false)
-    private String rate;
+    @Column(name = "answer", nullable = false)
+    private String answer;
 
     /**
-     * 오답 문항 내역
+     * 해설
      */
-    @Column(name = "history")
-    private String history;
+    @Column(name = "explanation", nullable = false)
+    private String explanation;
+
+    /**
+     * 오답1
+     */
+    @Column(name = "wrongAnswer1", nullable = false)
+    private String wrongAnswer1;
+
+    /**
+     * 오답2
+     */
+    @Column(name = "wrongAnswer2", nullable = false)
+    private String wrongAnswer2;
+
+    /**
+     * 오답3
+     */
+    @Column(name = "wrongAnswer3", nullable = false)
+    private String wrongAnswer3;
 }

@@ -41,8 +41,8 @@ public class Newsletter {
     /**
      * AI 요약 내용
      */
-    @Column(name = "content", nullable = false)
-    private String content;
+    @Column(name = "summary", nullable = false)
+    private String summary;
 
     /**
      * 좋아요 수
