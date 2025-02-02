@@ -4,6 +4,7 @@ import com.example.koschool.domain.comment.entity.Comment;
 import com.example.koschool.domain.community.entity.Community;
 import com.example.koschool.domain.communityLikes.entity.CommunityLikes;
 import com.example.koschool.domain.enums.CategoryEnum;
+import com.example.koschool.domain.member.dto.request.JoinMemberRequestDto;
 import com.example.koschool.domain.newsletterLikes.entity.NewsletterLikes;
 import com.example.koschool.domain.quizHistory.entity.QuizHistory;
 import jakarta.persistence.CascadeType;
@@ -16,6 +17,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.List;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -80,5 +82,21 @@ public class Member {
      */
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<QuizHistory> quizList;
+
+
+    @Builder
+    private Member(String id, String password, CategoryEnum categoryTopic) {
+        this.id = id;
+        this.password = password;
+        this.categoryTopic = categoryTopic;
+    }
+
+    public static Member fromDtoToEntity(JoinMemberRequestDto memberRequestDto) {
+        return Member.builder()
+            .id(memberRequestDto.getId())
+            .password(memberRequestDto.getPassword())
+            .categoryTopic(memberRequestDto.getCategoryTopic())
+            .build();
+    }
 
 }
