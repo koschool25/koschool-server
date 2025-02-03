@@ -59,7 +59,7 @@ public class Newsletter {
     /**
      * 뉴스레터 좋아요
      */
-    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "newsletter", cascade = CascadeType.ALL)
     private List<NewsletterLikes> newsletterLikesList;
 
     /**
