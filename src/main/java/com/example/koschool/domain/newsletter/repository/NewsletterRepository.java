@@ -16,8 +16,4 @@ public interface NewsletterRepository extends JpaRepository<Newsletter, String> 
         + "WHERE n.category = :category AND n.date = :date")
     List<NewsletterListResponseDto> findByCategoryAndDate(String category, LocalDate date);
 
-    @Query("SELECT NEW com.example.koschool.domain.newsletter.dto.response.NewsletterResponseDto(n.title, n.summary, n.likes, n.stockCode, n.link)"
-        + "FROM Newsletter n "
-        + "WHERE n.id = :newsletterId")
-    NewsletterResponseDto findNewsletterByNewsletterId(Long newsletterId);
 }

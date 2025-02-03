@@ -10,17 +10,17 @@ public class NewsletterResponseDto {
     private String title;
     private String summary;
     private Integer likes;
-    private String stockCode;
+    private String stock;
     private String link;
 
     Random random = new Random();
 
     @Builder
-    private NewsletterResponseDto(String title, String summary, Integer likes, String stockCode, String link) {
+    private NewsletterResponseDto(String title, String summary, Integer likes, String stock, String link) {
         this.title = title;
         this.summary = summary;
         this.likes = random.nextInt(240)+11;
-        this.stockCode = stockCode;
+        this.stock = stock;
         this.link = link;
     }
 
@@ -29,7 +29,7 @@ public class NewsletterResponseDto {
             .title(newsletter.getTitle())
             .summary(newsletter.getSummary())
             .likes(newsletter.getLikes())
-            .stockCode(newsletter.getStockCode())
+            .stock(newsletter.getStock())
             .link(newsletter.getLink())
             .build();
     }

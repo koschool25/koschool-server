@@ -5,7 +5,6 @@ import com.example.koschool.domain.newsletter.dto.response.NewsletterResponseDto
 import com.example.koschool.domain.newsletter.service.NewsletterService;
 import com.example.koschool.global.ApiResponse;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

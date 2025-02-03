@@ -1,17 +1,12 @@
 package com.example.koschool.domain.newsletter.entity;
 
-import com.example.koschool.domain.enums.CategoryEnum;
-import com.example.koschool.domain.newsletterLikes.entity.NewsletterLikes;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
-import java.util.List;
 import lombok.Getter;
 
 @Entity
@@ -23,7 +18,7 @@ public class Newsletter {
      * 고유 id
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true)
     private Long id;
 
@@ -37,7 +32,7 @@ public class Newsletter {
      * 카테고리
      */
     @Column(name = "category", nullable = false)
-    private CategoryEnum category;
+    private String category;
 
     /**
      * AI 요약 내용
@@ -58,16 +53,10 @@ public class Newsletter {
     private String link;
 
     /**
-     * 뉴스레터 좋아요
+     * 종목 이름
      */
-    @OneToMany(mappedBy = "newsletter", cascade = CascadeType.ALL)
-    private List<NewsletterLikes> newsletterLikesList;
-
-    /**
-     * 종목 코드
-     */
-    @Column(name = "stock_code")
-    private String stockCode;
+    @Column(name = "stock")
+    private String stock;
 
     /**
      * 날짜
