@@ -11,4 +11,3 @@ public class KoschoolApplication {
     }
 
 }
-//server check
