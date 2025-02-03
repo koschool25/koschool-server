@@ -20,6 +20,12 @@ jobs:
           distribution: 'temurin'
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
+        
+      - name: Set YML
+        run: |
+            mkdir -p src/main/resources
+            echo "${{ secrets.APPLICATION_YAML }}" | base64 --decode > src/main/resources/application.yaml
+            find src
 
       #2. SpringBoot application build 
       - name: Build with Gradle Wrapper
