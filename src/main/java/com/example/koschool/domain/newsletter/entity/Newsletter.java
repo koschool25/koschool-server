@@ -10,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.time.LocalDate;
 import java.util.List;
 import lombok.Getter;
 
@@ -23,8 +24,8 @@ public class Newsletter {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "newsletter_id", unique = true)
-    private Long newsletterId;
+    @Column(name = "id", unique = true)
+    private Long id;
 
     /**
      * 제목
@@ -67,5 +68,11 @@ public class Newsletter {
      */
     @Column(name = "stock_code")
     private String stockCode;
+
+    /**
+     * 날짜
+     */
+    @Column(name = "date")
+    private LocalDate date;
 
 }
