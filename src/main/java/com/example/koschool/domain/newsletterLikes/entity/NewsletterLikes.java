@@ -22,7 +22,7 @@ public class NewsletterLikes {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "newsletter_likes_id", unique = true, nullable = false)
+    @Column(name = "newsletter_likes_id", unique = true)
     private Long newsletterLikesId;
 
     /**

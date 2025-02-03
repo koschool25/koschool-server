@@ -22,7 +22,7 @@ public class Session extends BaseEntity {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "session_id", unique = true, nullable = false)
+    @Column(name = "session_id", unique = true)
     private Long sessionId;
 
     /**

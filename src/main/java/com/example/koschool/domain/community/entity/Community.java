@@ -30,7 +30,7 @@ public class Community extends BaseEntity {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "community_id", unique = true, nullable = false)
+    @Column(name = "community_id", unique = true)
     private Long communityId;
 
     /**

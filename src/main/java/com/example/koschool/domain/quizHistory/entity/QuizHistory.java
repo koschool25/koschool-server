@@ -13,9 +13,11 @@ import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
+@NoArgsConstructor
 @Table(name = "Quiz_History")
 public class QuizHistory {
 
@@ -24,7 +26,7 @@ public class QuizHistory {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "quiz_history_id", unique = true, nullable = false)
+    @Column(name = "quiz_history_id", unique = true)
     private Long quizHistoryId;
 
     /**

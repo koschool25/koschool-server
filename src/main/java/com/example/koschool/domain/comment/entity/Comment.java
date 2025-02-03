@@ -22,7 +22,7 @@ public class Comment {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "comment_id", unique = true, nullable = false)
+    @Column(name = "comment_id", unique = true)
     private Long commentId;
 
     /**
