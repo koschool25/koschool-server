@@ -1,12 +1,14 @@
 package com.example.koschool.domain.newsletter;
 
 import com.example.koschool.domain.newsletter.dto.response.NewsletterListResponseDto;
+import com.example.koschool.domain.newsletter.dto.response.NewsletterResponseDto;
 import com.example.koschool.domain.newsletter.service.NewsletterService;
 import com.example.koschool.global.ApiResponse;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,9 +21,14 @@ public class NewsletterController {
 
     private final NewsletterService newsletterService;
 
-    @GetMapping("/")
-    public ApiResponse<List<NewsletterListResponseDto>> getNewsLetterList(@RequestParam("category") String category,
+    @GetMapping("/list")
+    public ApiResponse<List<NewsletterListResponseDto>> getNewsletterList(@RequestParam("category") String category,
         @RequestParam("date") LocalDate date) {
-        return (ApiResponse<List<NewsletterListResponseDto>>) newsletterService.getNewsLetterList(category, date);
+        return ApiResponse.of(HttpStatus.OK, newsletterService.getNewsLetterList(category, date));
+    }
+
+    @GetMapping("/detail")
+    public ApiResponse<NewsletterResponseDto> getNewsletter(@RequestParam("newsletterId") String newsletterId) {
+        return ApiResponse.of(HttpStatus.OK, newsletterService.getNewsLetter(newsletterId));
     }
 }

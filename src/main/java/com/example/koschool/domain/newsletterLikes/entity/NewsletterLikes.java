@@ -29,7 +29,7 @@ public class NewsletterLikes {
      * 뉴스레터 고유 id
      */
     @ManyToOne
-    @JoinColumn(referencedColumnName = "newsletter_id", name = "newsletter_id", nullable = false)
+    @JoinColumn(referencedColumnName = "id", name = "newsletter_id", nullable = false)
     private Newsletter newsletter;
 
     /**
