@@ -22,7 +22,7 @@ public class NewsletterLikes {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "newsletter_likes_id", unique = true, nullable = false)
+    @Column(name = "newsletter_likes_id", unique = true)
     private Long newsletterLikesId;
 
     /**
@@ -36,7 +36,7 @@ public class NewsletterLikes {
      * 사용자 고유 id
      */
     @ManyToOne
-    @JoinColumn(referencedColumnName = "member_id", name = "member_id", nullable = false)
+    @JoinColumn(referencedColumnName = "id", name = "member_id", nullable = false)
     private Member member;
 
     /**

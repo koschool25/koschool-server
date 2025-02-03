@@ -26,13 +26,4 @@ public class CommunityService {
         Optional<List<CommunityListResponseDto>> communityListResponseDto = communityRepository.findCommunity();
         return communityListResponseDto.orElseGet(null);
     }
-
-    /**
-     * 좋아요 누르기/취소하기
-     */
-//    @Transactional
-//    public CommunityLikesResponseDto updateCommunityLikes(CommunityLikesRequestDto communityLikesRequestDto) {
-//        Optional<Community> community = communityRepository.findCommunityByCommunityIdAndMemberId(communityLikesRequestDto.getCommunityId(),
-//            communityLikesRequestDto.getMemberId());
-//    }
 }

@@ -23,7 +23,7 @@ public class Newsletter {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "newsletter_id", unique = true, nullable = false)
+    @Column(name = "newsletter_id", unique = true)
     private Long newsletterId;
 
     /**

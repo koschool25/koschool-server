@@ -23,7 +23,7 @@ public class Message extends BaseEntity {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "message_id", unique = true, nullable = false)
+    @Column(name = "message_id", unique = true)
     private Long messageId;
 
     /**

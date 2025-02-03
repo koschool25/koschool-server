@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CommunityRepository extends JpaRepository<Community, String> {
 
-    @Query("SELECT NEW com.example.koschool.domain.community.dto.response.CommunityListResponseDto(c.communityId, c.member.memberId, c.title, c.likes, c.comments) "
+    @Query("SELECT NEW com.example.koschool.domain.community.dto.response.CommunityListResponseDto(c.communityId, c.member.id, c.title, c.likes, c.comments) "
         + "FROM Community c "
         + "ORDER BY c.createdAt DESC")
     Optional<List<CommunityListResponseDto>> findCommunity();

@@ -28,7 +28,7 @@ public class MemberController {
     @PostMapping("/login")
     public ApiResponse<MemberResponseDto> loginMember(@RequestBody LoginMemberRequestDto loginMemberRequestDto, HttpSession httpSession) {
         MemberResponseDto memberResponseDto = memberService.loginMember(loginMemberRequestDto.getLoginId());
-        httpSession.setAttribute("memberId", loginMemberRequestDto.getMemberId());
+        httpSession.setAttribute("id", loginMemberRequestDto.getId());
         return ApiResponse.of(HttpStatus.OK, memberResponseDto);
     }
 }

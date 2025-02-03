@@ -32,8 +32,8 @@ public class Member {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "member_id", unique = true)
-    private Long memberId;
+    @Column(name = "id", unique = true)
+    private Long id;
 
     /**
      * 사용자 id
