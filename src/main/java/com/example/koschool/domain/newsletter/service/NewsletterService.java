@@ -9,6 +9,7 @@ import com.example.koschool.global.exception.ErrorCode;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +22,11 @@ public class NewsletterService {
     private final NewsletterRepository newsletterRepository;
 
     public List<NewsletterListResponseDto> getNewsLetterList(String category, LocalDate date) {
-        return newsletterRepository.findByCategoryAndDate(category, date);
+        List<Newsletter> newsletters = newsletterRepository.findByCategoryAndDate(category, date);
+
+        return newsletters.stream()
+            .map(newsletter -> new NewsletterListResponseDto(newsletter.getId(), newsletter.getTitle()))
+            .collect(Collectors.toList());
     }
 
     public NewsletterResponseDto getNewsLetter(String newsletterId) {

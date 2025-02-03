@@ -20,6 +20,12 @@ public class NewsletterController {
 
     private final NewsletterService newsletterService;
 
+    /**
+     * 뉴스레터 핫토픽 목록 보기
+     * @param category
+     * @param date
+     * @return
+     */
     @GetMapping("/list")
     public ApiResponse<List<NewsletterListResponseDto>> getNewsletterList(@RequestParam("category") String category,
         @RequestParam("date") LocalDate date) {

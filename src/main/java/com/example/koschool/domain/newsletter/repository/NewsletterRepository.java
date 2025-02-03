@@ -11,9 +11,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface NewsletterRepository extends JpaRepository<Newsletter, String> {
-    @Query("SELECT NEW com.example.koschool.domain.newsletter.dto.response.NewsletterListResponseDto(n.id, n.title)"
-        + "FROM Newsletter n "
-        + "WHERE n.category = :category AND n.date = :date")
-    List<NewsletterListResponseDto> findByCategoryAndDate(String category, LocalDate date);
+
+    List<Newsletter> findByCategoryAndDate(String category, LocalDate date);
 
 }

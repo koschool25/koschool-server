@@ -1,18 +1,14 @@
 package com.example.koschool.domain.newsletter.dto.response;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
 @Getter
+@AllArgsConstructor
 public class NewsletterListResponseDto {
 
-    private Long newsletterId;
+    private Long id;
     private String title;
-
-    @Builder
-    private NewsletterListResponseDto(Long newsletterId, String title) {
-        this.newsletterId = newsletterId;
-        this.title = title;
-    }
 
 }
