@@ -1,6 +1,7 @@
 package com.example.koschool.domain.quizHistory.entity;
 
 import com.example.koschool.domain.member.entity.Member;
+import com.example.koschool.domain.quizHistory.dto.request.RegisterQuizHistoryRequestDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,6 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
+import lombok.Builder;
 import lombok.Getter;
 
 @Entity
@@ -29,7 +31,7 @@ public class QuizHistory {
      * 사용자 고유 id
      */
     @ManyToOne
-    @JoinColumn(referencedColumnName = "member_id", name = "member_id", nullable = false)
+    @JoinColumn(referencedColumnName = "id", name = "member_id", nullable = false)
     private Member member;
 
     /**
@@ -49,4 +51,17 @@ public class QuizHistory {
      */
     @Column(name = "history")
     private String history;
+
+    @Builder
+    private QuizHistory(Member member, LocalDateTime date, String rate, String history) {
+        this.member = member;
+        this.date = date;
+        this.rate = rate;
+        this.history = history;
+    }
+//    public static QuizHistory fromDtoToEntity(RegisterQuizHistoryRequestDto registerQuizHistoryRequestDto) {
+//        return QuizHistory.builder()
+//            .member(registerQuizHistoryRequestDto.getMemberId())
+//            .build();
+//    }
 }
