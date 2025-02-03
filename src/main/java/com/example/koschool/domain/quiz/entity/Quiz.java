@@ -1,6 +1,5 @@
 package com.example.koschool.domain.quiz.entity;
 
-import com.example.koschool.domain.enums.LevelEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,20 +17,26 @@ public class Quiz {
      * 고유 id
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "quiz_id", unique = true)
-    private Long quizId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true)
+    private Long id;
+
+    /**
+     * 뉴스레터 id
+     */
+    @Column(name = "newsletterId")
+    private Long newsletterId;
 
     /**
      * 수준
      */
     @Column(name = "level", nullable = false)
-    private LevelEnum level;
+    private Integer level;
 
     /**
      * 질문
      */
-    @Column(name = "question", unique = true, nullable = false)
+    @Column(name = "question", nullable = false)
     private String question;
 
     /**

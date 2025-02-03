@@ -25,7 +25,6 @@ public class NewsletterService {
     }
 
     public NewsletterResponseDto getNewsLetter(String newsletterId) {
-        System.out.println("asdfasdf");
         Optional<Newsletter> newsletter = newsletterRepository.findById(newsletterId);
         if(newsletter.isEmpty()){
             throw new CustomException(ErrorCode.NEWSLETTER_NOT_FOUND);
