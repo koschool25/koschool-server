@@ -37,7 +37,7 @@ public class Community extends BaseEntity {
      * 사용자 고유 id
      */
     @ManyToOne
-    @JoinColumn(referencedColumnName = "member_id", name = "member_id", nullable = false)
+    @JoinColumn(referencedColumnName = "id", name = "member_id", nullable = false)
     private Member member;
 
     /**

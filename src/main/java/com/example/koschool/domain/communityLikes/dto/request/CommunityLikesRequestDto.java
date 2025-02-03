@@ -5,5 +5,5 @@ import lombok.Getter;
 @Getter
 public class CommunityLikesRequestDto {
     private Long communityId;
-    private Long memberId;
+    private Long id;
 }
