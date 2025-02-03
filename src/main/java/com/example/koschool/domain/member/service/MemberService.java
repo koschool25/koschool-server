@@ -31,7 +31,6 @@ public class MemberService {
     public MemberResponseDto loginMember(String loginId) {
         Member member = memberRepository.findByLoginId(loginId)
             .orElseThrow(() -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
-        System.out.println("what");
         return MemberResponseDto.of(member);
     }
 }
