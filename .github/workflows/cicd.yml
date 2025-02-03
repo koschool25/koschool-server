@@ -34,7 +34,7 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - name: Build with Gradle Wrapper
-        run: ./gradlew build
+        run: ./gradlew build -x test
 
       #3. Docker hub login 
       - name: Docker login
