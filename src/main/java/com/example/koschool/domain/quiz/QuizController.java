@@ -1,6 +1,6 @@
 package com.example.koschool.domain.quiz;
 
-import com.example.koschool.domain.quiz.dto.response.LevelQuizResponseDto;
+import com.example.koschool.domain.quiz.dto.response.QuizResponseDto;
 import com.example.koschool.domain.quiz.service.QuizService;
 import com.example.koschool.global.ApiResponse;
 import java.util.List;
@@ -24,7 +24,17 @@ public class QuizController {
      * @return
      */
     @GetMapping("/level")
-    public ApiResponse<List<LevelQuizResponseDto>> levelQuiz(@RequestParam("level") String level) {
+    public ApiResponse<List<QuizResponseDto>> levelQuiz(@RequestParam("level") String level) {
         return ApiResponse.of(HttpStatus.OK, quizService.levelQuiz(level));
+    }
+
+    /**
+     * newsletter id에 해당하는 모든 문제 추출
+     * @param newsletter
+     * @return
+     */
+    @GetMapping("/newsletter")
+    public ApiResponse<List<QuizResponseDto>> newsletterQuiz(@RequestParam("newsletter") String newsletter) {
+        return ApiResponse.of(HttpStatus.OK, quizService.newsletterQuiz(newsletter));
     }
 }

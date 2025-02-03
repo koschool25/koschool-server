@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-public class LevelQuizResponseDto {
+public class QuizResponseDto {
 
     private Long id;
     private String question;
@@ -16,7 +16,7 @@ public class LevelQuizResponseDto {
     private String wrongAnswer3;
 
     @Builder
-    private LevelQuizResponseDto(Long id, String question, String answer, String explanation, String wrongAnswer1, String wrongAnswer2, String wrongAnswer3) {
+    private QuizResponseDto(Long id, String question, String answer, String explanation, String wrongAnswer1, String wrongAnswer2, String wrongAnswer3) {
         this.id = id;
         this.question = question;
         this.answer = answer;
@@ -26,8 +26,8 @@ public class LevelQuizResponseDto {
         this.wrongAnswer3 = wrongAnswer3;
     }
 
-    public static LevelQuizResponseDto of(Quiz quiz) {
-        return LevelQuizResponseDto.builder()
+    public static QuizResponseDto of(Quiz quiz) {
+        return QuizResponseDto.builder()
             .id(quiz.getId())
             .question(quiz.getQuestion())
             .answer(quiz.getAnswer())

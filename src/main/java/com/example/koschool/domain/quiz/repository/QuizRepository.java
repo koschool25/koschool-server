@@ -12,5 +12,7 @@ public interface QuizRepository extends JpaRepository<Quiz, String> {
     @Query("SELECT q FROM Quiz q WHERE q.newsletterId IS NULL AND q.level = :level ORDER BY FUNCTION('RAND')")
     List<Quiz> findRandomQuizzesByLevel(@Param("level") String level, Pageable pageable);
 
+    @Query("SELECT q FROM Quiz q WHERE q.newsletterId IN :newsletterIds")
+    List<Quiz> findQuizzesByNewsletterIds(@Param("newsletterIds") List<Long> newsletterIds);
 
 }
