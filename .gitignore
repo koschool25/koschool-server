@@ -38,3 +38,4 @@ out/
 
 ### Database ###
 /src/main/resources/application.yaml
+src/main/java/com/example/koschool/global/ddl.sql
