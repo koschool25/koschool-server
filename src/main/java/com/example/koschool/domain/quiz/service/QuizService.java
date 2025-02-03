@@ -1,7 +1,6 @@
 package com.example.koschool.domain.quiz.service;
 
-import com.example.koschool.domain.quiz.dto.response.LevelQuizResponseDto;
-import com.example.koschool.domain.quiz.dto.response.NewsletterQuizResponseDto;
+import com.example.koschool.domain.quiz.dto.response.QuizResponseDto;
 import com.example.koschool.domain.quiz.entity.Quiz;
 import com.example.koschool.domain.quiz.repository.QuizRepository;
 import java.util.Arrays;
@@ -20,15 +19,15 @@ public class QuizService {
 
     private final QuizRepository quizRepository;
 
-    public List<LevelQuizResponseDto> levelQuiz(String level) {
+    public List<QuizResponseDto> levelQuiz(String level) {
         Pageable pageable = PageRequest.of(0, 10);
         List<Quiz> quizList = quizRepository.findRandomQuizzesByLevel(level, pageable);
         return quizList.stream()
-            .map(LevelQuizResponseDto::of)
+            .map(QuizResponseDto::of)
             .collect(Collectors.toList());
     }
 
-    public List<NewsletterQuizResponseDto> newsletterQuiz(String newsletter) {
+    public List<QuizResponseDto> newsletterQuiz(String newsletter) {
         List<Long> newsletterIdList = Arrays.stream(newsletter.split(","))
             .map(Long::parseLong)
             .collect(Collectors.toList());
@@ -36,7 +35,7 @@ public class QuizService {
         List<Quiz> quizList = quizRepository.findQuizzesByNewsletterIds(newsletterIdList);
 
         return quizList.stream()
-            .map(NewsletterQuizResponseDto::of)
+            .map(QuizResponseDto::of)
             .collect(Collectors.toList());
     }
 }
