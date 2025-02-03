@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class JoinMemberRequestDto {
 
-    private String id;
+    private String loginId;
     private String password;
-    private CategoryEnum categoryTopic;
+    private String categoryTopic;
 
 }

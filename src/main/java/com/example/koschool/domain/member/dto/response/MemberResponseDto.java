@@ -8,18 +8,18 @@ import lombok.Getter;
 public class MemberResponseDto {
 
     private Long memberId;
-    private String id;
+    private String loginId;
 
     @Builder
-    private MemberResponseDto(Long memberId, String id) {
+    private MemberResponseDto(Long memberId, String loginId) {
         this.memberId = memberId;
-        this.id = id;
+        this.loginId = loginId;
     }
 
     public static MemberResponseDto of(Member member) {
         return MemberResponseDto.builder()
             .memberId(member.getMemberId())
-            .id(member.getId())
+            .loginId(member.getLoginId())
             .build();
     }
 }

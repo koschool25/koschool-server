@@ -32,14 +32,14 @@ public class Member {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "member_id", unique = true, nullable = false)
+    @Column(name = "member_id", unique = true)
     private Long memberId;
 
     /**
      * 사용자 id
      */
-    @Column(name = "id", unique = true, nullable = false)
-    private String id;
+    @Column(name = "login_id", unique = true, nullable = false)
+    private String loginId;
 
     /**
      * 사용자 pw
@@ -51,7 +51,7 @@ public class Member {
      * 사용자 뉴스레터 취향
      */
     @Column(name = "category_topic", nullable = false)
-    private CategoryEnum categoryTopic;
+    private String categoryTopic;
 
     /**
      * 커뮤니티 글 올린 내역
@@ -85,17 +85,17 @@ public class Member {
 
 
     @Builder
-    private Member(String id, String password, CategoryEnum categoryTopic) {
-        this.id = id;
+    private Member(String loginId, String password, CategoryEnum categoryTopic) {
+        this.loginId = loginId;
         this.password = password;
-        this.categoryTopic = categoryTopic;
+        this.categoryTopic = categoryTopic.getName();
     }
 
     public static Member fromDtoToEntity(JoinMemberRequestDto memberRequestDto) {
         return Member.builder()
-            .id(memberRequestDto.getId())
+            .loginId(memberRequestDto.getLoginId())
             .password(memberRequestDto.getPassword())
-            .categoryTopic(memberRequestDto.getCategoryTopic())
+            .categoryTopic(CategoryEnum.ofCategoryEnum(memberRequestDto.getCategoryTopic()))
             .build();
     }
 

@@ -4,6 +4,8 @@ import com.example.koschool.domain.member.dto.request.JoinMemberRequestDto;
 import com.example.koschool.domain.member.dto.response.MemberResponseDto;
 import com.example.koschool.domain.member.entity.Member;
 import com.example.koschool.domain.member.repository.MemberRepository;
+import com.example.koschool.global.exception.CustomException;
+import com.example.koschool.global.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,12 +19,16 @@ public class MemberService {
 
     @Transactional
     public MemberResponseDto joinMember(JoinMemberRequestDto joinMemberRequestDto) {
+        Member member = memberRepository.findByLoginId(joinMemberRequestDto.getLoginId())
+            .orElseThrow(() -> new CustomException(ErrorCode.MEMBER_LOGINID_DUPLICATED));
         return MemberResponseDto.of(memberRepository.save(Member.fromDtoToEntity(joinMemberRequestDto)));
     }
 
-    public MemberResponseDto loginMember(String id) {
-        Member member = memberRepository.findById(id)
-            .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 회원입니다."));
+    @Transactional
+    public MemberResponseDto loginMember(String loginId) {
+        Member member = memberRepository.findByLoginId(loginId)
+            .orElseThrow(() -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
+        System.out.println("what");
         return MemberResponseDto.of(member);
     }
 }
