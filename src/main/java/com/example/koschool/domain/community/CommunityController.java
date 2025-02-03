@@ -27,9 +27,4 @@ public class CommunityController {
     public ApiResponse<List<CommunityListResponseDto>> getCommunityList() {
         return ApiResponse.of(HttpStatus.OK, communityService.getCommunityList());
     }
-
-//    @PostMapping("/like")
-//    public ApiResponse<CommunityLikesResponseDto> updateCommunityLikes(CommunityLikesRequestDto communityLikesRequestDto) {
-//        return ApiResponse.of(HttpStatus.OK, communityService.updateCommunityLikes(communityLikesRequestDto));
-//    }
 }

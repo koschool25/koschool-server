@@ -59,9 +59,4 @@ public class QuizHistory {
         this.rate = rate;
         this.history = history;
     }
-//    public static QuizHistory fromDtoToEntity(RegisterQuizHistoryRequestDto registerQuizHistoryRequestDto) {
-//        return QuizHistory.builder()
-//            .member(registerQuizHistoryRequestDto.getMemberId())
-//            .build();
-//    }
 }
