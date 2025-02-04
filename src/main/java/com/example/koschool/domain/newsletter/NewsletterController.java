@@ -21,7 +21,7 @@ public class NewsletterController {
     private final NewsletterService newsletterService;
 
     /**
-     * 뉴스레터 핫토픽 목록 보기
+     * 메인 페이지 뉴스레터 핫토픽 목록 보기
      * @param category
      * @return
      */
@@ -31,7 +31,7 @@ public class NewsletterController {
     }
 
     /**
-     * 뉴스레터 핫토픽 랭킹 보기
+     * 더보기 페이지 뉴스레터 핫토픽 랭킹 보기
      * @param category
      * @param date
      * @return

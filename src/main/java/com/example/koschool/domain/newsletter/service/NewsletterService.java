@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,8 +32,10 @@ public class NewsletterService {
     }
 
     public List<NewsletterListResponseDto> getNewsLetterListWithLikes(String category, LocalDate date) {
-        List<Newsletter> newsletters = newsletterRepository.findByCategoryAndDateOrderByLikesDesc(category, date);
 
+        Pageable pageable = PageRequest.of(0, 3);
+        List<Newsletter> newsletters = newsletterRepository.findTop3ByCategoryAndDateBetweenOrderByLikesDesc(
+            category, date.minusMonths(1), date, pageable);
         return newsletters.stream()
             .map(newsletter -> new NewsletterListResponseDto(newsletter.getId(), newsletter.getTitle()))
             .collect(Collectors.toList());
