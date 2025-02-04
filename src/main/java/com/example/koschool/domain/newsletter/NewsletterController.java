@@ -20,14 +20,45 @@ public class NewsletterController {
 
     private final NewsletterService newsletterService;
 
+    /**
+     * 메인 페이지 뉴스레터 핫토픽 목록 보기
+     * @param category
+     * @return
+     */
     @GetMapping("/list")
-    public ApiResponse<List<NewsletterListResponseDto>> getNewsletterList(@RequestParam("category") String category,
-        @RequestParam("date") LocalDate date) {
-        return ApiResponse.of(HttpStatus.OK, newsletterService.getNewsLetterList(category, date));
+    public ApiResponse<List<NewsletterListResponseDto>> getNewsletterList(@RequestParam("category") String category) {
+        return ApiResponse.of(HttpStatus.OK, newsletterService.getNewsletterList(category));
     }
 
+    /**
+     * 더보기 페이지 뉴스레터 핫토픽 랭킹 보기
+     * @param category
+     * @param date
+     * @return
+     */
+    @GetMapping("/list/likes")
+    public ApiResponse<List<NewsletterListResponseDto>> getNewsletterListWithLikes(@RequestParam("category") String category,
+        @RequestParam("date") LocalDate date) {
+        return ApiResponse.of(HttpStatus.OK, newsletterService.getNewsletterListWithLikes(category, date));
+    }
+
+    /**
+     * 더보기 페이지 이전 뉴스레터 목록 보기
+     * @param category
+     * @return
+     */
+    @GetMapping("/list/previous")
+    public ApiResponse<List<NewsletterListResponseDto>> getNewsletterListPrevious(@RequestParam("category") String category) {
+        return ApiResponse.of(HttpStatus.OK, newsletterService.getNewsletterListPrevious(category));
+    }
+
+    /**
+     * 상세 페이지 뉴스레터 보기
+     * @param newsletterId
+     * @return
+     */
     @GetMapping("/detail")
-    public ApiResponse<NewsletterResponseDto> getNewsletter(@RequestParam("newsletterId") String newsletterId) {
-        return ApiResponse.of(HttpStatus.OK, newsletterService.getNewsLetter(newsletterId));
+    public ApiResponse<NewsletterResponseDto> getNewsletterDetail(@RequestParam("newsletterId") Long newsletterId) {
+        return ApiResponse.of(HttpStatus.OK, newsletterService.getNewsLetterDetail(newsletterId));
     }
 }
