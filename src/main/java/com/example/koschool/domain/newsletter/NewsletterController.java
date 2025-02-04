@@ -23,13 +23,11 @@ public class NewsletterController {
     /**
      * 뉴스레터 핫토픽 목록 보기
      * @param category
-     * @param date
      * @return
      */
     @GetMapping("/list")
-    public ApiResponse<List<NewsletterListResponseDto>> getNewsletterList(@RequestParam("category") String category,
-        @RequestParam("date") LocalDate date) {
-        return ApiResponse.of(HttpStatus.OK, newsletterService.getNewsLetterList(category, date));
+    public ApiResponse<List<NewsletterListResponseDto>> getNewsletterList(@RequestParam("category") String category) {
+        return ApiResponse.of(HttpStatus.OK, newsletterService.getNewsLetterList(category));
     }
 
     /**

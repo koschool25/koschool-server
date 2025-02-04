@@ -21,8 +21,8 @@ public class NewsletterService {
 
     private final NewsletterRepository newsletterRepository;
 
-    public List<NewsletterListResponseDto> getNewsLetterList(String category, LocalDate date) {
-        List<Newsletter> newsletters = newsletterRepository.findByCategoryAndDate(category, date);
+    public List<NewsletterListResponseDto> getNewsLetterList(String category) {
+        List<Newsletter> newsletters = newsletterRepository.findTop3ByCategoryOrderByIdDesc(category);
 
         return newsletters.stream()
             .map(newsletter -> new NewsletterListResponseDto(newsletter.getId(), newsletter.getTitle()))
