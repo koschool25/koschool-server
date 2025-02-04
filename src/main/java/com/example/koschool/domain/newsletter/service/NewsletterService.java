@@ -46,11 +46,9 @@ public class NewsletterService {
             .collect(Collectors.toList());
     }
 
-    public NewsletterResponseDto getNewsLetter(String newsletterId) {
-        Optional<Newsletter> newsletter = newsletterRepository.findById(newsletterId);
-        if (newsletter.isEmpty()) {
-            throw new CustomException(ErrorCode.NEWSLETTER_NOT_FOUND);
-        }
-        return NewsletterResponseDto.fromEntityToDto(newsletter.get());
+    public NewsletterResponseDto getNewsLetterDetail(Long newsletterId) {
+        Newsletter newsletter = newsletterRepository.findById(newsletterId)
+            .orElseThrow(() -> new CustomException(ErrorCode.NEWSLETTER_NOT_FOUND));
+        return NewsletterResponseDto.fromEntityToDto(newsletter);
     }
 }

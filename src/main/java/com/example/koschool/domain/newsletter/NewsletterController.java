@@ -52,8 +52,13 @@ public class NewsletterController {
         return ApiResponse.of(HttpStatus.OK, newsletterService.getNewsletterListPrevious(category));
     }
 
+    /**
+     * 상세 페이지 뉴스레터 보기
+     * @param newsletterId
+     * @return
+     */
     @GetMapping("/detail")
-    public ApiResponse<NewsletterResponseDto> getNewsletter(@RequestParam("newsletterId") String newsletterId) {
-        return ApiResponse.of(HttpStatus.OK, newsletterService.getNewsLetter(newsletterId));
+    public ApiResponse<NewsletterResponseDto> getNewsletterDetail(@RequestParam("newsletterId") Long newsletterId) {
+        return ApiResponse.of(HttpStatus.OK, newsletterService.getNewsLetterDetail(newsletterId));
     }
 }
