@@ -23,16 +23,14 @@ public class NewsletterService {
 
     private final NewsletterRepository newsletterRepository;
 
-    public List<NewsletterListResponseDto> getNewsLetterList(String category) {
+    public List<NewsletterListResponseDto> getNewsletterList(String category) {
         List<Newsletter> newsletters = newsletterRepository.findTop3ByCategoryOrderByIdDesc(category);
-
         return newsletters.stream()
             .map(newsletter -> new NewsletterListResponseDto(newsletter.getId(), newsletter.getTitle()))
             .collect(Collectors.toList());
     }
 
-    public List<NewsletterListResponseDto> getNewsLetterListWithLikes(String category, LocalDate date) {
-
+    public List<NewsletterListResponseDto> getNewsletterListWithLikes(String category, LocalDate date) {
         Pageable pageable = PageRequest.of(0, 3);
         List<Newsletter> newsletters = newsletterRepository.findTop3ByCategoryAndDateBetweenOrderByLikesDesc(
             category, date.minusMonths(1), date, pageable);
@@ -41,9 +39,16 @@ public class NewsletterService {
             .collect(Collectors.toList());
     }
 
+    public List<NewsletterListResponseDto> getNewsletterListPrevious(String category) {
+        List<Newsletter> newsletters = newsletterRepository.findAllByCategoryOrderByIdDesc(category);
+        return newsletters.stream()
+            .map(newsletter -> new NewsletterListResponseDto(newsletter.getId(), newsletter.getTitle()))
+            .collect(Collectors.toList());
+    }
+
     public NewsletterResponseDto getNewsLetter(String newsletterId) {
         Optional<Newsletter> newsletter = newsletterRepository.findById(newsletterId);
-        if(newsletter.isEmpty()){
+        if (newsletter.isEmpty()) {
             throw new CustomException(ErrorCode.NEWSLETTER_NOT_FOUND);
         }
         return NewsletterResponseDto.fromEntityToDto(newsletter.get());

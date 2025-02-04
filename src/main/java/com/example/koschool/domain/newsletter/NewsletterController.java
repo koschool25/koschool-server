@@ -27,7 +27,7 @@ public class NewsletterController {
      */
     @GetMapping("/list")
     public ApiResponse<List<NewsletterListResponseDto>> getNewsletterList(@RequestParam("category") String category) {
-        return ApiResponse.of(HttpStatus.OK, newsletterService.getNewsLetterList(category));
+        return ApiResponse.of(HttpStatus.OK, newsletterService.getNewsletterList(category));
     }
 
     /**
@@ -39,7 +39,17 @@ public class NewsletterController {
     @GetMapping("/list/likes")
     public ApiResponse<List<NewsletterListResponseDto>> getNewsletterListWithLikes(@RequestParam("category") String category,
         @RequestParam("date") LocalDate date) {
-        return ApiResponse.of(HttpStatus.OK, newsletterService.getNewsLetterListWithLikes(category, date));
+        return ApiResponse.of(HttpStatus.OK, newsletterService.getNewsletterListWithLikes(category, date));
+    }
+
+    /**
+     * 더보기 페이지 이전 뉴스레터 목록 보기
+     * @param category
+     * @return
+     */
+    @GetMapping("/list/previous")
+    public ApiResponse<List<NewsletterListResponseDto>> getNewsletterListPrevious(@RequestParam("category") String category) {
+        return ApiResponse.of(HttpStatus.OK, newsletterService.getNewsletterListPrevious(category));
     }
 
     @GetMapping("/detail")

@@ -16,11 +16,10 @@ public interface NewsletterRepository extends JpaRepository<Newsletter, String> 
 
     List<Newsletter> findTop3ByCategoryOrderByIdDesc(String category);
 
-    List<Newsletter> findByCategoryAndDateOrderByLikesDesc(String category, LocalDate date);
-
     @Query("SELECT n FROM Newsletter n WHERE n.category = :category " +
         "AND n.date BETWEEN :startDate AND :endDate ORDER BY n.likes DESC")
     List<Newsletter> findTop3ByCategoryAndDateBetweenOrderByLikesDesc(@Param("category") String category,
         @Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate, Pageable pageable);
 
+    List<Newsletter> findAllByCategoryOrderByIdDesc(String category);
 }
