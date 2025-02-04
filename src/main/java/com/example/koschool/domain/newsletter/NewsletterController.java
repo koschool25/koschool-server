@@ -32,6 +32,18 @@ public class NewsletterController {
         return ApiResponse.of(HttpStatus.OK, newsletterService.getNewsLetterList(category, date));
     }
 
+    /**
+     * 뉴스레터 핫토픽 랭킹 보기
+     * @param category
+     * @param date
+     * @return
+     */
+    @GetMapping("/list/likes")
+    public ApiResponse<List<NewsletterListResponseDto>> getNewsletterListWithLikes(@RequestParam("category") String category,
+        @RequestParam("date") LocalDate date) {
+        return ApiResponse.of(HttpStatus.OK, newsletterService.getNewsLetterListWithLikes(category, date));
+    }
+
     @GetMapping("/detail")
     public ApiResponse<NewsletterResponseDto> getNewsletter(@RequestParam("newsletterId") String newsletterId) {
         return ApiResponse.of(HttpStatus.OK, newsletterService.getNewsLetter(newsletterId));

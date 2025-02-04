@@ -14,4 +14,6 @@ public interface NewsletterRepository extends JpaRepository<Newsletter, String> 
 
     List<Newsletter> findByCategoryAndDate(String category, LocalDate date);
 
+    List<Newsletter> findByCategoryAndDateOrderByLikesDesc(String category, LocalDate date);
+
 }

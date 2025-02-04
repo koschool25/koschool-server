@@ -29,6 +29,14 @@ public class NewsletterService {
             .collect(Collectors.toList());
     }
 
+    public List<NewsletterListResponseDto> getNewsLetterListWithLikes(String category, LocalDate date) {
+        List<Newsletter> newsletters = newsletterRepository.findByCategoryAndDateOrderByLikesDesc(category, date);
+
+        return newsletters.stream()
+            .map(newsletter -> new NewsletterListResponseDto(newsletter.getId(), newsletter.getTitle()))
+            .collect(Collectors.toList());
+    }
+
     public NewsletterResponseDto getNewsLetter(String newsletterId) {
         Optional<Newsletter> newsletter = newsletterRepository.findById(newsletterId);
         if(newsletter.isEmpty()){
